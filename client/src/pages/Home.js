@@ -8,30 +8,31 @@ export default function Home() {
   const { workouts, dispatch } = useWorkoutsContext();
 
   useEffect(() => {
-    // const fetchWorkouts = async () => {
-    //   const response = await fetch('/api/workouts')
-    //   const json = await response.json()
-
-    //   if (response.ok) {
-    //     setWorkouts(json)
-    //   }
-    // }
     const fetchWorkouts = async () => {
-      try {
-        const response = await axios.get("/api/workouts"); // Use Axios to make the GET request
-        if (response.status === 200) {
-          // console.log(response.data)
-          // Assuming the JSON response is in response.data
-          // setWorkouts(response.data);
-          dispatch({type:'SET_WORKOUTS', payload: response.data})
-        }
-      } catch (error) {
-        console.error("Error:", error);
+      const response = await fetch('/api/workouts')
+      const json = await response.json()
+
+      if (response.ok) {
+        // setWorkouts(json)
+        dispatch({type:'SET_WORKOUTS', payload: json})
       }
-    };
+    }
+    // const fetchWorkouts = async () => {
+    //   try {
+    //     const response = await axios.get("http://localhost:8080/api/workouts"); // Use Axios to make the GET request
+    //     if (response.status === 200) {
+    //       // console.log(response.data)
+    //       // Assuming the JSON response is in response.data
+    //       // setWorkouts(response.data);
+    //       dispatch({type:'SET_WORKOUTS', payload: response.data})
+    //     }
+    //   } catch (error) {
+    //     console.error("Error:", error);
+    //   }
+    // };
 
     fetchWorkouts();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="home">
