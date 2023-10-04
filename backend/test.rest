@@ -1,0 +1,33 @@
+
+# GET all
+GET http://localhost:8080/api/workouts
+
+###
+# GET single
+GET http://localhost:8080/api/workouts/651c59423fdffe3edfdb3ac0
+
+###
+# POST single
+POST http://localhost:8080/api/workouts/
+Content-Type: application/json
+
+{
+    "title":"Bench Press",
+    "reps": 40,
+    "load": 25
+}
+###
+# DELETE single
+DELETE http://localhost:8080/api/workouts/651c59423fdffe3edfdb3ac0
+
+###
+# PATCH update
+PATCH http://localhost:8080/api/workouts/651c59423fdffe3edfdb3ac0
+Content-Type: application/json
+
+{
+    "title":"Bench Press",
+    "reps": 40,
+    "load": 25
+}
+###
